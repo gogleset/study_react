@@ -29,7 +29,7 @@ yarn add qs
 1. index.js 파일에서 `<App />`을 `<BrowserRouter><App /></BrowserRouter>`로 변경
 1. App.js 파일에 다음을 추가
    ```js
-   import { Route, Link, Switch } from "react-router-dom";
+   import { Route, Link, Routes } from "react-router-dom";
    ```
 
 ### 2) 프로젝트 실행

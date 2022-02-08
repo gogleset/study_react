@@ -12,7 +12,6 @@ import { useLocation } from 'react-router-dom';
  */
 const DepartmentGet = () => {
     // 잡다한 콘솔 출력 삭제
-    console.clear();
 
     const location = useLocation();
     console.group("useLocation() 값 확인");
@@ -51,9 +50,9 @@ const DepartmentGet = () => {
     let departmentItem = null;
 
     // 미리 준비한 JSON에서 deptno값이 일치하는 정보를 조회
-    departmentList.item.some((item, index) => {
-        if (item.deptno === deptno) {
-            departmentItem = item;
+    departmentList.item.some((v, i) => {
+        if (v.deptno === deptno) {
+            departmentItem = v;
             return true;
         }
         return false;

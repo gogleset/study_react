@@ -1,22 +1,21 @@
 import React from 'react';
-
+import { useParams } from 'react-router-dom';
 /**
  * Path 파라미터를 전달받는 페이지.
  * 
- * @param {*} props 컴포넌트에게 전달되는 부가정보
  */
-const DepartmentPath = (props) => {
-    /** 요청 데이터 확인하기 */
-    console.group("DepartmentPath");
+const DepartmentPath = () => {
+    console.clear();
 
-    // path 파라미터는 props의 match.params객체로 내장되어있다.
-    const urlParams = props.match.params;
-    console.debug(urlParams);
+    /** 요청 데이터 확인하기 */
+    const params = useParams();
+    console.group("useParams() 값 확인");
+    console.log(params);
+    console.groupEnd();
 
     // 필요한 변수값과 타입 확인
-    console.debug('요청된 학과번호 값=%s (%s)', urlParams.deptno, typeof urlParams.deptno);
-    console.debug('요청된 메시지 내용=%s (%s)', urlParams.msg, typeof urlParams.msg);
-    console.groupEnd();
+    console.debug('요청된 학과번호 값=%s (%s)', params.deptno, typeof params.deptno);
+    console.debug('요청된 메시지 내용=%s (%s)', params.msg, typeof params.msg);
 
     /** 한 페이지에서 GET파라미터에 따라 다르게 표현할 데이터 준비 */
     // --> 실전에서는 이 값에 해당하는 JSON을 백엔드로부터 받아와야 한다. ==> Ajax
