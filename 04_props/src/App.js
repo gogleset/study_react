@@ -9,7 +9,7 @@ const App = () => {
 
     return (
         <div>
-            <h1>05-props</h1>
+            <h1>04-props</h1>
             <nav>
                 <Link to="/myprops">[MyProps]</Link>
                 <Link to="/myproptypes">[MyPropTypes]</Link>

@@ -35,7 +35,7 @@ MyChildrenSub.propTypes = {
 MyChildrenSub.defaultProps = {
     width: 300,
     height: 100,
-    children: '내용이 없습니다.'
+    children: '내용이 없습니다'
 };
 
 export default MyChildrenSub;

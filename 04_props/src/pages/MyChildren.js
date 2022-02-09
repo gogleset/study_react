@@ -7,7 +7,7 @@ const MyChildren = () => {
         <div>
             <h2>MyChildren</h2>
             {/* props 전달시 문자열 이외의 데이터타입은 중괄호로 묶어야 함 */}
-            <MyChildrenSub width={400} height={10}>Hello World</MyChildrenSub>
+            <MyChildrenSub width={400} height={100}>Hello World</MyChildrenSub>
 
             <MyChildrenSub width={300} height={80}>hello</MyChildrenSub>
 

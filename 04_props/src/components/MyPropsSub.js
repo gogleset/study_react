@@ -27,7 +27,7 @@ const MyPropsSub = (props) => {
 // (defaultProps 객체이름 고정)
 // 가급적 무조건 권장~!!!!
 MyPropsSub.defaultProps = {
-    name: '이름없음',
+    name: 'not',
     age: 20
 };
 
