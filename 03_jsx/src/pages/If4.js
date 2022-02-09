@@ -14,7 +14,7 @@ const If4 = () => {
             <h2>If4</h2>
 
             {
-                // 삼항연산자 
+                // 삼항연산자
                 isLogin === true ? 
                 <button type='button'>로그아웃</button> : 
                 <button type='button'>로그인</button>
