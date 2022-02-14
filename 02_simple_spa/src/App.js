@@ -1,6 +1,6 @@
 import React from "react";
 
-// route 기능을 위한 패키지에서 Route 함수와 Link 함수, Switch함수만 골라서 참조
+
 import { Route, Link, Routes } from "react-router-dom";
 
 import Home from './pages/Home';
@@ -9,10 +9,14 @@ import Main from './pages/Main';
 import DepartmentGet from './pages/DepartmentGet';
 import DepartmentPath from './pages/DepartmentPath';
 import Error404 from './pages/Error404';
+import Meta from './components/meta';
 
 const App = () => {
     return (
         <div>
+            {/* Routes 처리를 수행하는 페이지에서 이 컴포넌트 사용시, 이 내용이 모든 페이지에 공통 적용된다. */}
+            <Meta />
+
             <h1>Hello World</h1>
             <hr></hr>
             {/* 링크 구성부분 */}
