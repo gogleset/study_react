@@ -15,7 +15,7 @@ const App = () => {
   // 페이지 타이틀에 적용할 InlineCSS 정의
   // --> CSS는 JS 속성으로 기술해야 함.
   // --> CSS 전체 구조는 JSON객체.
-  // --> CSS는 자바스크립트 방식으로 표기해야한다.
+  // --> CSS는 자바스크립트 방식으로 표기해야 한다.
   // 만약 CSS를 변수가 아닌 직접 넣고 싶다면 괄호가 이중으로 들어간다 {{fontWeight: 'bold', color: '#b82514', textDecoration: 'none', marginRight: '10px'}}
   const myStyle = {
     fontWeight: "bold",

@@ -1,6 +1,6 @@
 import React from 'react';
 
-/** scss파일 참조하기 --> 참조변수 사용 안함 */
+/** scss파일 참조하기 -->  참조변수 사용 안함 */
 import '../assets/scss/style.scss';
 
 /**

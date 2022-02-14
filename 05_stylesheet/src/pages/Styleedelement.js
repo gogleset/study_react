@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * 컴포넌트 코드 안에서 SCSS 문법을 적용한 컴포넌트를 직접 정의
+ * 컴포넌트 코드 안에서 SCSS 문법을 적용한 컴포넌트를 직접 정의 
  * 패키지 설치가 필요함.
  *      yarn add styled-components
  *
