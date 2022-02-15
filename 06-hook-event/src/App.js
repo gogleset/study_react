@@ -58,31 +58,7 @@ const MenuLink = styled(NavLink)`
 const App = () => {
     return (
         <div>
-            <h1>06-hook-event</h1>
-            <nav>
-                <MenuLink to='/mystate'>MyState</MenuLink>
-                <MenuLink to='/daterange1'>DateRange1</MenuLink>
-                <MenuLink to='/myeffect'>MyEffect</MenuLink>
-                <MenuLink to='/myref'>MyRef</MenuLink>
-                <MenuLink to='/myreducer'>MyReducer</MenuLink>
-                <MenuLink to='/daterange2'>DateRange2</MenuLink>
-                <MenuLink to='/mycallback'>MyCallback</MenuLink>
-                <MenuLink to='/mymemo'>MyMemo</MenuLink>
-                <MenuLink to='/mywidth'>MyWidth</MenuLink>
-            </nav>
-            <hr />
-
-            <Switch>
-                <Route path='/mystate' component={MyState} />
-                <Route path='/daterange1' component={DateRange1} />
-                <Route path='/myeffect' component={MyEffect} />
-                <Route path='/myref' component={MyRef} />
-                <Route path='/myreducer' component={MyReducer} />
-                <Route path='/daterange2' component={DateRange2} />
-                <Route path='/mycallback' component={MyCallback} />
-                <Route path='/mymemo' component={MyMemo} />
-                <Route path='/mywidth' component={MyWidth} />
-            </Switch>
+           
         </div>
     );
 };

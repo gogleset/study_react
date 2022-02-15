@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * useReduce에 의해 호출될 사용자 정의 함수
+ * useReducer에 의해 호출될 사용자 정의 함수
  * --> action값이 OO일 때 state값을 ~~~해라.
  * --> action값의 DataType은 개발자가 결정할 수 있다. (int, string, boolean, json ...)
  * --> state값의 DataType역시 개발자가 결정할 수 있다. (int, string, boolean, json ...)

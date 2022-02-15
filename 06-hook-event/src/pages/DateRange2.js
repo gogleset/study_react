@@ -30,10 +30,9 @@ const setDateValue = (state, action) => {
             sdate =  moment().format('YYYY-MM-DD');
             break;
     }
-
     return { ...state, startDate: sdate };
 };
-
+// useReducer의 장점은 로직을 한곳에 모을 수 있다.
 const DateRange2 = () => {
     const [myDate, setMyDate] = React.useReducer(setDateValue, {
         // 날짜 형식 참고: https://momentjs.com/docs/#/displaying/

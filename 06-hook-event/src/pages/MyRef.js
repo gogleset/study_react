@@ -31,6 +31,7 @@ const MyRef = () => {
             <button onClick={e => {
                 // 컴포넌트 참조변수를 사용해서 다른 HTML 태그에 접근 가능
                 // --> "참조변수.current" 해당 HTML을 의미하는 Javascript DOM 객체
+                // --> myDanme.current와 document.querySelector(...), document.getElementById(...)등으로 생성한 객체가 동일한 DOM 객체이다.
                 console.log(myDname);
                 console.log(myLoc);
 
