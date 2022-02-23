@@ -19,8 +19,7 @@ const MyEffect = () => {
    */
   React.useEffect(() => {
     console.log(
-      "[MyEffect1] %s ::: 화면에 컴포넌트가 처음 로드될 때 처리되어야 할 기능",
-      new Date()
+      "[MyEffect1] ::: 화면에 컴포넌트가 처음 로드될 때 처리되어야 할 기능"
     );
     window.addEventListener("resize", onMyResize);
     return () => window.removeEventListener("resize", onMyResize);
@@ -32,8 +31,7 @@ const MyEffect = () => {
    */
   React.useEffect(() => {
     console.log(
-      "[MyEffect2] %s ::: 화면에 컴포넌트가 처음 로드되거나 state, props 중 하나라도 변경될 경우 호출됨",
-      "아무것도 배열에 설정하지 않았을 경우"
+      "[MyEffect2] ::: 화면에 컴포넌트가 처음 로드되거나 state, props 중 하나라도 변경될 경우 호출됨"
     );
   });
 
@@ -42,7 +40,7 @@ const MyEffect = () => {
    * 배열을 넣어주면 특정 값만 바꾸라라는것이고, 어떠한 값을 모니터링하는 것처럼 동작하게 된다.
    */
   React.useEffect(() => {
-    console.log("[MyEffect4] %s ::: myBrightness값이 변경됨", "배열에 설정하였을 경우");
+    console.log("[MyEffect4] ::: myBrightness값이 변경됨");
   }, [myBrightness]);
 
   /**
@@ -52,8 +50,7 @@ const MyEffect = () => {
   React.useEffect(() => {
     return () => {
       console.log(
-        "[MyEffect3] %s ::: 이 컴포넌트가 화면에서 사라지기 직전에 처리되어야 할 기능",
-        "바로 리턴할 경우"
+        "[MyEffect3] %s ::: 이 컴포넌트가 화면에서 사라지기 직전에 처리되어야 할 기능"
       );
     };
   });

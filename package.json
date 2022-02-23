@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "qs": "^6.10.3",
-    "react-helmet": "^6.1.0"
-  }
-}

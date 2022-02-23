@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Redux</title>
+</head>
+
+<body>
+    <h1>Simple Redux</h1>
+
+    <h2 id="label">0</h2>
+    <div>
+        <button type="button" id="plusButton">+5</button>
+        <button type="button" id="minusButton">-1</button>
+    </div>
+
+    <!-- 리덕스는 본디 독립적인 Framework 임 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.2/redux.min.js"></script>
+
+    <script>
+        /** ------------ module 영역 ----------- **/
+
+        /**
+         * 1) 상태값 - 단순한 json 객체.
+         * 컴포넌트에서 다루고자 하는 데이터들을 포함한다.
+         */
+        const initialState = {
+            number: 0, //컴포넌트에 표시할 데이터
+            color: '#f60', //컴포넌트에 적용할 글자 색상
+        };
+
+        /**
+         * 2) 액션 - 컴포넌트가 겪는 상황을 구분하는 문자열 값
+         * 여기서는 +, - 버튼이 눌러졌을 때를 의미하는 문자열로 사용함
+         * -사용자 이벤트에 대한 경우의 수
+         */
+        const ACT_PLUS = 'HELLO-PLUS';
+        const ACT_MINUS = 'WORLD-MINUS';
+
+        /**
+         * 3) 액션 생성 함수 - 액션 객체를 만들어서 리턴한다.
+         * 컴포넌트에 대한 "액션 값의 수" 만큼 정의하되 필요하다면 파라미터를 자유롭게 정의할 수 있다.
+         * 액션함수들은 HTML 요소의 이벤트가 발생한 경우 호출할 수 있도록 구현한다.
+         * ex) function foo() { ... 이 안에서 액션함수 호출 ... }
+               <button onclick="plusAction(5)" />
+         * 액션함수를 호출하는데 사용되는 특별한 방법이 존재함.(중요!!)
+         * -이벤트가 발생했을 때 호출할 함수
+         */
+        function plusAction(value) {
+            // 액션 객체는 반드시 type이라는 key에 action값을 포함해야 한다.
+            const action = {
+                type: ACT_PLUS, //반드시 포함해야 하는 key
+                diff: value, //개발자가 임의로 정의하는 key
+            };
+            return action;
+        }
+
+        // 화살표 함수 숙지
+        const minusAction = (value) => ({ type: ACT_MINUS, diff: value });
+
+        /**
+         * 4) 리듀서
+         * "액션값이 OO일 때, 상태값을 XX로 변경한다"라는 명령을 수행하는 함수
+         * -> 여기서 상태값은 1번 단계에서 설정한 initialState임.
+         * 개발자가 직접 호출하지 않고 리덕스에 의해 "호출된다".
+         * 최초 호출될 경우 state값을 1번 단계에서 미리 정의한 상태값이 사용되도록 기본값을 정의해 놓는다.(중요!!!!!)
+         * -> action값이 OO일 때 파라미터로 전달되는 state값을 조작한 뒤
+         *    동일한 구조의 json 객체를 반환하도록 정의해야 한다.
+         */
+
+        const myCounterReducer = (state = initialState, action = null) => {
+            console.log(action);
+
+            let numberValue = 0;
+            let colorValue = '#000';
+
+            switch (action.type) {
+                case ACT_PLUS: numberValue = state.number + action.diff;
+                    break;
+                case ACT_MINUS: numberValue = state.number - action.diff; break;
+                default: return state;
+            }
+
+            if (numberValue > 0) {
+                colorValue = '#2f77eb';
+            } else if (numberValue < 0) {
+                colorValue = '#f60';
+            }
+
+            // 파라미터로 전달받는 state객체와 같은 구조의 객체를 리턴해야 한다.(initialState)
+            return { number: numberValue, color: colorValue };
+        };
+
+        /**
+         * 5) 스토어 생성 --> 상태값, ACTION, 리듀서 함수가 포함된 객체 생성
+         */
+        const store = Redux.createStore(myCountReducer);
+
+        /** ------------- component 영역 ------------ **/
+
+        /**
+         * 6) 구독 - 스토어에 함수를 등록하는 처리. (모니터링)
+         * 스토어에 등록된 리듀서가 리턴하는 값을 조회해서 화면을 갱신할 기능을 구현한다.
+         * 스토어 내부에서 상태값이 변경되었다는 것이 감지될 경우 이 안의 코드가 자동으로 실행된다.
+         */
+        store.subscribe(() => {
+            // 스토어에서 상태값을 추출한다.
+            const state = store.getState();
+            document.getElementById('label').innerText = state.number;
+            document.getElementById('label').style.color = state.color;
+            console.log('스토어를 구독하는 함수가 실행됨');
+        });
+
+        // 익명함수 스타일 이벤트 처리
+        document.getElementById('plusButton').addEventListener('click', function () {
+            // store에 연결된 리듀서를 호출한다.
+            // 액션 함수가 리턴하는 json객체는 리듀서에게 action 파라미터로 전달되고, state값은 최초1회에서는 외부에 정의한 기본값이 사용되는데 그 이후로는 store가 내부적으로 저장하는 값을 재활용한다.
+            store.dispatch(plusAction(5));
+        });
+
+        // 화살표 함수 스타일 이벤트 처리
+        document.getElementById('minusButton').addEventListener('click', () => {
+            store.dispatch(minusAction(1));
+        });
+    </script>
+</body>
+
+</html>
