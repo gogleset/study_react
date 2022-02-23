@@ -9,8 +9,11 @@ import { getList } from "../slices/DepartmentSlice";
 const ReduxToolkitDepartment = () => {
   React.useEffect(() => console.clear(), []);
 
-  //   hook을 통해 slice가 관리하는 상태값 가져오기
-  const { rt, rtmsg, item, loading } = useSelector((state) => state.department);
+  //   hook을 통해 slice가 관리하는 상태값 가져오기(store.js에 department 리듀서 정의)
+  const { rt, rtmsg, item, loading } = useSelector((state) => {
+    console.log(state.departments);
+    return state.department;
+  });
 
   // dispatch 함수 생성
   const dispatch = useDispatch();
@@ -18,7 +21,7 @@ const ReduxToolkitDepartment = () => {
   if (loading) {
     return <div>Loding...</div>;
   }
-//   성공이 아닐떄
+  //   성공이 아닐떄
   if (rt !== 200) {
     return (
       <div>
@@ -35,29 +38,31 @@ const ReduxToolkitDepartment = () => {
       </div>
     );
   }
-  return <div>
+  return (
+    <div>
       <h2>ReduxToolkitDepartment</h2>
-      <table border = "1">
-          <thead>
-              <tr>
-                  <th>id</th>
-                  <th>dname</th>
-                  <th>loc</th>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>dname</th>
+            <th>loc</th>
+          </tr>
+        </thead>
+        <tbody>
+          {item.map((v, i) => {
+            return (
+              <tr key={i}>
+                <td>{v.id}</td>
+                <td>{v.dname}</td>
+                <td>{v.loc}</td>
               </tr>
-          </thead>
-          <tbody>
-              {item.map((v,i) => {
-                  return (
-                    <tr key={i}>
-                        <td>{v.id}</td>
-                        <td>{v.dname}</td>
-                        <td>{v.loc}</td>
-                    </tr>
-                  );
-              })}
-          </tbody>
+            );
+          })}
+        </tbody>
       </table>
-  </div>;
+    </div>
+  );
 };
 
 export default ReduxToolkitDepartment;

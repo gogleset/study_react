@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
-
+// 리액트 앱에 store 연동하기
 import { Provider } from "react-redux";
 import store from "./store";
 

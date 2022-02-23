@@ -20,7 +20,7 @@ export const getList = createAsyncThunk("department/getList", async (payload, {r
 
 // slice 정의(Action 함수 + Reducer의 개념)
 export const departmentSlice = createSlice({
-    name: 'department',
+    name: 'departments',
     initialState: {
         rt: null,    //HTTP 상태 코드(200, 404, 500 등)
         rtmsg: null, //에러메세지

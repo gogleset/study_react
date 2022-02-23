@@ -8,7 +8,7 @@ import { professorSlice } from './slices/ProfessorSlice';
 // Slice 오브젝트 참조 구문 명시 위치
 const logger = createLogger();
 
-
+// 리덕스 store의 설정?파일 정도로 생각
 const store = configureStore({
     // 개발자가 직접 작성한 Slice 오브젝트들이 명시되어야 한다.
     reducer:{
