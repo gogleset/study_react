@@ -38,7 +38,31 @@ const bookSlice = createSlice({
     loading: false, // 로딩 여부
   },
   // 내부 action 및 동기 action (Ajax처리시에는 사용하지 않음)
-  reducers: {},
+  reducers: {
+    expensive: (state, action) => {
+      let item = null;
+      if (action) {
+        item = action.payload;
+        console.log(item);
+
+        // 정렬하기 전 배열 복사
+        item = item.slice().sort((a, b) => b.price - a.price);
+      }
+      return { rt: 200, item: item };
+    },
+    cheap: (state, action) => {
+      let item = null;
+      if (action) {
+        item = action.payload;
+        console.log(item);
+
+        // 정렬하기 전 배열 복사
+        item = item.slice().sort((a, b) => a.price - b.price);
+      }
+
+      return { rt: 200, item: item };
+    },
+  },
   // 외부 action 및 비동기 action
   extraReducers: {
     /** Ajax요청 준비 */
@@ -53,7 +77,7 @@ const bookSlice = createSlice({
         ...state,
         rt: payload.status,
         rtmsg: payload.statusText,
-        item: payload.data,
+        item: payload.data.documents,
         loading: false,
       };
     },
@@ -70,5 +94,6 @@ const bookSlice = createSlice({
     },
   },
 });
+export const { expensive, cheap } = bookSlice.actions;
 // 리듀서 객체 내보내기
 export default bookSlice.reducer;

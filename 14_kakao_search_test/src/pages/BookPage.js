@@ -3,24 +3,15 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getBookList } from "../slices/BookSlice";
 import { Oval } from "react-loader-spinner";
-import { expensive, cheap } from "../slices/SortSlice";
+import { expensive, cheap } from "../slices/BookSlice";
 
 import ListView from "../components/ListView";
 import style from "../assets/scss/style.module.scss";
 
 const BookPage = ({ query, sort }) => {
-  let result = null;
   // 리덕스 스토어에 저장되어 있는 상태값 받기
   const { rt, rtmsg, item, loading } = useSelector((state) => {
-    result = state.book.item.documents;
-    console.log(result);
     return state.book;
-  });
-  
-
-  const {data} = useSelector((state) => {
-    console.log(result);
-    return state.sort;
   });
 
   // 액션함수를 호출하기 위한 디스패치 함수 생성
@@ -41,6 +32,8 @@ const BookPage = ({ query, sort }) => {
     }
   }, [dispatch, sort]);
 
+  console.log(item);
+
   return (
     <div>
       {/* 로딩바 */}
@@ -60,14 +53,13 @@ const BookPage = ({ query, sort }) => {
       )}
 
       {/* 결과값이 실패인 경우 에러메세지 표시, 성공인 경우 목록 컴포넌트 호출 */}
-
       {rt !== 200 ? (
         <div className={style.errmsg}>
           <h3>{rt} Error</h3>
           <p>{rtmsg}</p>
         </div>
       ) : (
-        <ListView documents={data} thumb={true} />
+        <ListView documents={item} thumb={true} />
       )}
     </div>
   );
