@@ -6,6 +6,7 @@ import axios from "axios";
 export const getBookList = createAsyncThunk(
   "BOOK/GET_LIST",
   async (payload, { rejectWithValue }) => {
+    // console.log("getBookList(BOOK_SLICE) - ::: 카카오 연동 시작");
     let result = null;
     if (payload) {
       try {
@@ -13,16 +14,16 @@ export const getBookList = createAsyncThunk(
         result = await axios.get(apiUrl, {
           params: { query: payload },
           headers: {
-            Authorization: "KakaoAK ff9e717a57a525ac5201c5c326224eea",
+            Authorization: "KakaoAK c193e640c6f5851ca31109d7bd403779",
           },
         });
+        // console.log("getBookList(BOOK_SLICE) ::: 카카오 연동 성공");
       } catch (err) {
         // 에러 발생시 `rejectWithValue()`함수에 에러 데이터를 전달하면 extraReducer
         // 의 rejected 함수가 호출된다.
         result = rejectWithValue(err.response);
       }
     }
-
     return result;
   }
 );
@@ -37,14 +38,14 @@ const bookSlice = createSlice({
     item: [], // Ajax 처리를 통해 수신된 데이터
     loading: false, // 로딩 여부
   },
-  // 내부 action 및 동기 action (Ajax처리시에는 사용하지 않음)
+  // 내부 action 및 동기 action 
   reducers: {
     expensive: (state, action) => {
+      console.log("EXPENSIVE ::: " + action);
       let item = null;
       if (action) {
         item = action.payload;
         console.log(item);
-
         // 정렬하기 전 배열 복사
         item = item.slice().sort((a, b) => b.price - a.price);
       }
@@ -55,11 +56,9 @@ const bookSlice = createSlice({
       if (action) {
         item = action.payload;
         console.log(item);
-
         // 정렬하기 전 배열 복사
         item = item.slice().sort((a, b) => a.price - b.price);
       }
-
       return { rt: 200, item: item };
     },
   },

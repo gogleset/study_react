@@ -8,11 +8,12 @@ import noimg from "../assets/img/noimg.png";
  * 검색결과와 썸네일 표시 여부를 전달받아 화면에 목록을 출력하는 컴포넌트
  * @param document - 검색결과 배열
  * @param thumb - 썸네일 이미지 표시 여부
+ * @param inview - 무한스크롤
  * @returns
  */
 
 const ListView = ({ documents, thumb, inview }) => {
-  console.log(documents);
+  console.log("LISTVIEW로 넘어온 documents 데이터입니다 ::: " + JSON.stringify.documents);
   return (
     <ul className={style.mediaList}>
       {/* 검색결과에 대한 반복문 수정 */}

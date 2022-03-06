@@ -14,25 +14,28 @@ const BookPage = ({ query, sort }) => {
     return state.book;
   });
 
+  // console.log("APP.JS에서 파라미터로 받은 query 데이터입니다 ::: " + query);
+  console.log("APP.JS에서 파라미터로 받은 sort 데이터입니다 ::: " + sort);
+  // console.log("STORE에서 구독한 데이터입니다 ::: " + item);
+
   // 액션함수를 호출하기 위한 디스패치 함수 생성
   const dispatch = useDispatch();
-  console.log("PAGE SORT = " + sort);
 
-  //   쿼리 값이 변경될 때만 실행되는 hook을 통해 액션함수 디스팻치
+  
   React.useEffect(() => {
-    dispatch(getBookList(query));
-  }, [dispatch, query]);
-
-  // 정렬값이 들어왔을 때 감지해서 실행
-  React.useEffect(() => {
-    if (sort === "expensive") {
+    //  쿼리 값이 변경될 때만 실행되는 hook을 통해 액션함수 디스팻치
+    console.log("query 데이터 변동 감지! ::: " + query);
+    if (sort === undefined) {
+      dispatch(getBookList(query)); 
+    } else if (sort === "expensive") {
+      //  정렬값이 들어왔을 때 감지해서 실행되는 hook을 통해 액션함수 디스팻치
+      // console.log("SORT 데이터 변동 감지! ::: " + sort);
       dispatch(expensive(item));
     } else if (sort === "cheap") {
+      // console.log("SORT 데이터 변동 감지! ::: " + sort);
       dispatch(cheap(item));
     }
-  }, [dispatch, sort]);
-
-  console.log(item);
+  }, [dispatch, query, sort]);
 
   return (
     <div>

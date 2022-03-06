@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const MenuLink = styled(NavLink)`
-  font-size: 20px;
+  display: inline-block;
+  font-size: 15px;
   cursor: pointer;
   text-decoration: none;
   padding-bottom: 2px;
@@ -30,6 +31,7 @@ const MenuLink = styled(NavLink)`
 const Top = () => {
   // 1-1) HTML 태그에 접근할 수 있는 참조변수를 생성
   const inputQuery = React.useRef();
+
   // 2-1) 검색어 상태변수 -> 기본값은 빈 문자열
   const [query, setQuery] = React.useState("");
 
@@ -42,9 +44,9 @@ const Top = () => {
 
     // 1-2)input 태그의 입력값 가져오기
     const value = inputQuery.current.value;
-
+    console.log("인풋값의 데이터입니다 ::: " + value);
     if (!value) {
-      query.current.focus();
+      inputQuery.current.focus();
       alert("검색어를 입력하세요");
       return;
     }
@@ -57,7 +59,7 @@ const Top = () => {
 
   return (
     <div>
-      <h1>카카오 검색</h1>
+      <h1>카카오 책 검색</h1>
       <hr />
       {/* 4-2) submit 이벤트 리스너에 미리 준비한 핸들러 연결 */}
       <form onSubmit={handleSubmit}>
@@ -66,17 +68,17 @@ const Top = () => {
         <button type="submit">검색</button>
       </form>
       {/* 2-3) query 값이 존재할 때만 메뉴를 노출한다. */}
+
       <nav>
         <MenuLink
           to={`/book?query=${encodeURIComponent(query)}&sort=expensive`}
         >
-          높은 가격 순으로 정렬
+          높은 가격 순
         </MenuLink>
         <MenuLink to={`/book?query=${encodeURIComponent(query)}&sort=cheap`}>
-          낮은 가격 순으로 정렬
+          낮은 가격 순
         </MenuLink>
       </nav>
-      
     </div>
   );
 };
