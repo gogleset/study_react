@@ -23,12 +23,12 @@ const BookPage = ({ query, sort }) => {
 
   
   React.useEffect(() => {
-    //  쿼리 값이 변경될 때만 실행되는 hook을 통해 액션함수 디스팻치
+    // 쿼리 값이 변경될 때만 실행되는 hook을 통해 액션함수 디스팻치
     console.log("query 데이터 변동 감지! ::: " + query);
     if (sort === undefined) {
       dispatch(getBookList(query)); 
     } else if (sort === "expensive") {
-      //  정렬값이 들어왔을 때 감지해서 실행되는 hook을 통해 액션함수 디스팻치
+      // 정렬값이 들어왔을 때 감지해서 실행되는 hook을 통해 액션함수 디스팻치
       // console.log("SORT 데이터 변동 감지! ::: " + sort);
       dispatch(expensive(item));
     } else if (sort === "cheap") {
