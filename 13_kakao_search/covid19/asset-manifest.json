@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gogleset/covid19/static/css/main.d8f50662.css",
+    "main.js": "/gogleset/covid19/static/js/main.73c52e43.js",
+    "static/js/787.9f3d4f03.chunk.js": "/gogleset/covid19/static/js/787.9f3d4f03.chunk.js",
+    "index.html": "/gogleset/covid19/index.html",
+    "main.d8f50662.css.map": "/gogleset/covid19/static/css/main.d8f50662.css.map",
+    "main.73c52e43.js.map": "/gogleset/covid19/static/js/main.73c52e43.js.map",
+    "787.9f3d4f03.chunk.js.map": "/gogleset/covid19/static/js/787.9f3d4f03.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8f50662.css",
+    "static/js/main.73c52e43.js"
+  ]
+}
